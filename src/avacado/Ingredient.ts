@@ -7,7 +7,7 @@ import { PortionType } from './PortionType'
  * @param  {string} name
  */
 
-export default class Ingredient {
+export class Ingredient {
 
     measurement: MeasurementType
     portion: PortionType

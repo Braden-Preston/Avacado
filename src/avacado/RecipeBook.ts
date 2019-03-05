@@ -1,20 +1,16 @@
-/**
- * @param  {string} name
- * @param  {Date} date
- */
+import { Recipe } from './Recipe'
+export class RecipeBook {
 
-export default class RecipeBook {
-
-    date: Date
     name: string
+    recipes: Array<Recipe>
 
-    constructor(date: Date, name: string) {
-        this.date = date
+    constructor(name: string, recipes: Array<Recipe>) {
         this.name = name
+        this.recipes = recipes
     }
 
     greeting() {
-        return `Recipe Book: ${this.name}, Created: ${this.date.toLocaleDateString()}`
+        return `Recipe Book: ${this.name}, Created: ${new Date().toLocaleDateString()}`
     }
     
 }
