@@ -27,8 +27,16 @@ export const defaultConfig = {
 export class MobxStore {
 
     [key: string]: any;
+    
     @observable recipeBook = new Collection(`users/${'3SRvQoY7u0E7WA1qUCpz'}/recipeBook`);
+
     @observable recipes = this.recipeBook.docs;
+
+    @observable currentDocID = 'ID';
+
+    @computed get currentDocument() {
+        return new Document(`users/${'3SRvQoY7u0E7WA1qUCpz'}/recipeBook/${this.currentDocID}`)
+    }
     @computed get recipes2() {
         let recipes = new Array()
         this.recipeBook.docs.map((doc: any) => {
@@ -54,6 +62,10 @@ export class MobxStore {
             }
         }
 
+    }
+
+    @action.bound setDocID(id: string) {
+        this.currentDocID = id
     }
 
     @action.bound async addRecipe(cats: string) {

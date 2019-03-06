@@ -6,3 +6,7 @@ export const RECIPES = '/recipes';
 export const TIMER = '/timer';
 export const PLANNER = '/planner';
 export const SETTINGS = '/settings';
+export const BREAKFAST = '/breakfast';
+export const LUNCH = '/lunch';
+export const DINNER = '/dinner';
+export const SNACK = '/snack';

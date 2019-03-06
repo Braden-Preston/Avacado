@@ -1,19 +1,11 @@
+import { observer, Provider } from 'mobx-react';
 import React, { Component, Fragment } from 'react';
-import { MobxStore, defaultConfig } from '../mobxStore';
-import { Provider, observer } from 'mobx-react';
-import RecipeBookGallery from './RecipeBookGallery';
+import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
+import { defaultConfig, MobxStore } from '../mobxStore';
+import * as routes from '../routes';
 import logo from './logo.svg';
-import * as routes from '../routes'
-
-// import { BrowserRouter } from 'react-router-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect,
-  withRouter
-} from 'react-router-dom'
+import { RecipeBook } from './RecipeBook';
+import { Screen } from './Screen';
 
 // Initialize State
 const store = new MobxStore(defaultConfig)
@@ -36,16 +28,13 @@ export default class App extends Component<PropTypes> {
         <Router>
           <RoutedApp />
         </Router>
-        {/* <Switch>
-
-</Switch> */}
       </Provider>
     )
   }
 }
 
-const RoutedApp = withRouter(({ location }) => (
-  <main className="App">
+const RoutedApp = withRouter(({ location, match }) => (
+  <Screen id="App">
     <ul style={{
       position: 'fixed', bottom: 0, zIndex: 9999, right: 20, padding: 10, borderRadius: 4, boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)', listStylePosition: "inside", background: 'lightgrey', paddingTop: 0, paddingBottom: 0, fontSize: 12,
     }}>
@@ -55,10 +44,10 @@ const RoutedApp = withRouter(({ location }) => (
       <li><Link to={routes.TIMER}>Timer</Link></li>
       <li><Link to={routes.SETTINGS}>Settings</Link></li>
     </ul>
-    <div style={{ position: 'fixed', top: 0, color: 'dodgerblue', background: 'lightgrey' }}>{location.pathname}</div>
+    <div style={{ position: 'fixed', bottom: 0, color: 'dodgerblue', background: 'lightgrey' }}>{location.pathname}</div>
     <Switch location={location}>
       <Route exact path={routes.ROOT} component={() => (
-        <div className="App">
+        <div className="Welcome">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <p>Welcome to Avacado</p>
@@ -68,9 +57,9 @@ const RoutedApp = withRouter(({ location }) => (
           </header>
         </div>
       )} />
-      <Route path={routes.RECIPES} component={RecipeBookGallery} />
+      <Route path={routes.RECIPES} component={RecipeBook} />
       <Route render={() => (<Fragment><h1>404</h1><h4>Page not found.</h4></Fragment>)} />
     </Switch>
-  </main>
+  </Screen>
 ))
 
