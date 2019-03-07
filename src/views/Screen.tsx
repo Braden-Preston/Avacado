@@ -4,7 +4,7 @@ import { createStyles, Theme, withStyles } from '@material-ui/core/styles';
 
 const styles = (theme: Theme) => createStyles({
     root: {
-        border: `2px solid orangered`,
+        // border: `2px solid orangered`,
         boxSizing: 'border-box',
         position: 'absolute',
         minHeight: '100vh',

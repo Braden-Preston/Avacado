@@ -2,7 +2,17 @@ import { MeasurementType } from './MeasurementType'
 import { PortionType } from './PortionType'
 import { Ingredient } from './Ingredient';
 import { isArray } from 'util';
+
+export interface RecipeDocument { 
+    name: string
+    description?: string
+    instructions: string
+    ingredients: any
+    [key: string]: any;
+}
+
 /**
+ * @param  {string} id
  * @param  {string} name
  * @param  {Array<Ingredient>} ingredients
  * @param  {string} instructions

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-
 import { defaultConfig, MobxStore } from '../mobxStore';
 import * as routes from '../routes';
 import logo from './logo.svg';
-import { RecipeBook } from './RecipeBook';
+import { RecipeGallery } from './RecipeGallery';
 import { Screen } from './Screen';
 
 // Initialize State
@@ -35,9 +35,7 @@ export default class App extends Component<PropTypes> {
 
 const RoutedApp = withRouter(({ location, match }) => (
   <Screen id="App">
-    <ul style={{
-      position: 'fixed', bottom: 0, zIndex: 9999, right: 20, padding: 10, borderRadius: 4, boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)', listStylePosition: "inside", background: 'lightgrey', paddingTop: 0, paddingBottom: 0, fontSize: 12,
-    }}>
+    <ul style={{ position: 'fixed', bottom: 0, zIndex: 9999, right: 20, padding: 10, borderRadius: 4, boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)', listStylePosition: "inside", background: 'lightgrey', paddingTop: 0, paddingBottom: 0, fontSize: 12, }}>
       <li><Link to={routes.ROOT}>Home</Link></li>
       <li><Link to={routes.RECIPES}>Recipes</Link></li>
       <li><Link to={routes.PLANNER}>Planner</Link></li>
@@ -57,7 +55,7 @@ const RoutedApp = withRouter(({ location, match }) => (
           </header>
         </div>
       )} />
-      <Route path={routes.RECIPES} component={RecipeBook} />
+      <Route path={routes.RECIPES} component={RecipeGallery} />
       <Route render={() => (<Fragment><h1>404</h1><h4>Page not found.</h4></Fragment>)} />
     </Switch>
   </Screen>

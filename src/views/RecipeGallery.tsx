@@ -3,16 +3,9 @@ import { inject, observer } from 'mobx-react';
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as routes from '../routes';
-import { Recpie } from './Recipe';
-import { RecipesCategory } from './RecipesCategory';
+import { RecipePage } from './RecipePage';
+import { RecipeCategory } from './RecipeCategory';
 import { Screen } from './Screen';
-
-interface PropTypes {
-    store: any
-    match: any
-    location: any
-    classes: any
-}
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -23,21 +16,25 @@ const styles = (theme: Theme) => createStyles({
     button: { /* ... */ },
 });
 
-export const RecipeBook =
+interface PropTypes {
+    store: any
+    match: any
+    location: any
+    classes: any
+}
+
+export const RecipeGallery =
     inject('store')(
         withStyles(styles)(
             observer(
                 class extends Component<PropTypes> {
-
                     render() {
-                        const { store, match, location, classes } = this.props
-                        console.log(this.props)
-
+                        const { store, match, location } = this.props
                         return (
                             <Screen id={'Recipe Book'}>
                                 <Switch location={location}>
-                                    <Route exact path={`${match.path}/:category`} render={({ match }) => (<RecipesCategory {...{ store, match }} />)} />
-                                    <Route path={`${match.path}/:category/:id`} render={({ match }) => (<Recpie {...{ store, match }} />)} />
+                                    <Route exact path={`${match.path}/:category`} render={({ match }) => (<RecipeCategory {...{ store, match }} />)} />
+                                    <Route path={`${match.path}/:category/:id`} render={({ match }) => (<RecipePage {...{ store, match }} />)} />
                                     <DefaultRoute {...{ match, route: routes.BREAKFAST }} />
                                 </Switch>
                             </Screen >

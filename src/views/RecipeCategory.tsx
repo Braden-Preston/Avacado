@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as routes from '../routes';
 import { Screen } from './Screen';
 
-export const RecipesCategory = observer(({ store, match }) => {
+export const RecipeCategory = observer(({ store, match }) => {
     // const { store, match, location, classes } = props
     const { recipes, addRecipe, deleteAllRecipes } = store
     // console.log(query)
