@@ -5,10 +5,14 @@ import { isArray } from 'util';
 
 export interface RecipeDocument { 
     name: string
-    description?: string
+    prep_time: number
+    img_url: string
+    favorite : boolean
+    tags: Array<string>
+    description: string
     instructions: string
-    ingredients: any
-    [key: string]: any;
+    ingredients: Array<string>
+    [key: string]: any
 }
 
 /**

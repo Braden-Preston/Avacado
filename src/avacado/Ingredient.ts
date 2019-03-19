@@ -41,4 +41,8 @@ export class Ingredient {
         }
     }
 
+    toString(): string {
+        return `${this.portion} ${this.measurement} ${this.name}`
+    }
+
 }

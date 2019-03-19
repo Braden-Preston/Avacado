@@ -71,10 +71,14 @@ export class MobxStore {
     @action.bound async addRecipe(cats: string) {
         try {
             await this.recipeBook.add({
-                name: 'Madagascar Cofee',
-                // ingredients: [a, b],
-                instructions: 'Shaken not stirred',
-                description: 'Very nice stuff!'
+                name: "A New Recipe",
+                description: "A wonderful new recipe!",
+                prep_time: "15",
+                tags: ['snack', 'dinner'],
+                img_url: "https://imgur.io/icing.png",
+                favorite: true,
+                ingredients: [a.toString(), b.toString()],
+                instructions: "Here is a basic set of instructions..."
             });
         }
         catch (err) {

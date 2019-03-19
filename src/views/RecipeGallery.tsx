@@ -23,6 +23,8 @@ interface PropTypes {
     classes: any
 }
 
+mui
+
 export const RecipeGallery =
     inject('store')(
         withStyles(styles)(
